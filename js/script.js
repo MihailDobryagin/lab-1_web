@@ -43,11 +43,11 @@ $(document).ready(function () {
 		$('input[name=x_input]:checked').each( function () {
 			if(x != '')
 				x += '&';
-			x += 'x[]=' + $(this).val();
+			x += 'x[]=' + Number($(this).val());
 		});
 		
-		let y = $('input[name=y_input]').val();
-		let r = $('input[name=r_input]:checked').val();
+		let y = Number($('input[name=y_input]').val());
+		let r = Number($('input[name=r_input]:checked').val());
 		let curTime = new Date().getTimezoneOffset();
 
 		$.ajax({

@@ -26,23 +26,26 @@ function check4($x, $y, $r)
 
 function checkX($x)
 {
+    $x =(double)$x;
     return is_double($x) && ($x == -2 || $x == -1.5 || $x == -1 || $x == -0.5 || $x == 0 || $x == 0.5 || $x == 1 || $x == 1.5 || $x == 2 || $x == 2.5);
 }
 
 function checkR($r)
 {
+    $r = (double)$r;
     return is_double($r) && ($r == 1 || $r == 1.5 || $r == 2 || $r == 2.5 || $r == 3);
 }
 
 function checkY($y)
 {
-    return !is_double($y) && $y >= -5 && $y <= 5;
+    $y = (double)$y;
+    return is_double($y) && $y >= -5 && $y <= 5;
 }
 
 function checkXArr($X)
 {
     foreach ($X as $x) {
-        if(!checkX(x))
+        if(!checkX($x))
             return false;
     }
 
@@ -53,8 +56,13 @@ $X = $_GET["x"];
 $y = $_GET["y"];
 $r = $_GET["r"];
 
-if(!(checkX($X) && checkY($y) && checkR($r)))
+try {
+    if (!(checkXArr($X) && checkY($y) && checkR($r)))
+        die(header("HTTP/1.0 400 Bad Request"));
+}catch (Exception $e)
+{
     die(header("HTTP/1.0 400 Bad Request"));
+}
 
 $curTime = date("H:i:s", time() - $_GET["curTime"] * 60);
 

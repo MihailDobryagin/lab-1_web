@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Labka 1</title>
+    <link rel="icon" href="img/puppy.ico">
+
+    <style>
+
+        @font-face {
+            font-family: 'MarkerFelt';
+            src: local('MarkerFelt'),
+            url('./fonts/MarkerFelt-Wide.ttf') format('truetype'),
+            url('./fonts/MarkerFelt-Wide.eot?#iefix') format('embedded-opentype'),
+            url('./fonts/MarkerFelt-Wide.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        body {
+            /*background: Azure;*/
+            background: white;
+            height: 580px;
+        }
+
+        .table_title {
+            background: LightGray;
+            color: #003850;
+            font-family: MarkerFelt, fantasy;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+
+        .card {
+            vertical-align: top;
+        }
+
+        #main_table{
+            width: 100%;
+            height: 100%;
+            border: 0px solid black;
+        }
+
+        #main_header {
+            width: 100%;
+            border-radius: 2px;
+            font-size: 1em;
+            height: 10%;
+            padding-top: 1.5%;
+        }
+
+
+        #main_header span:first-child {
+            float: left;
+        }
+
+        #main_header span:last-child {
+            float: right;
+        }
+
+        #main_table td {
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .card_left {
+            width: 40%;
+            height: 30%; /*30*2 + 10*3 + 10*/
+        }
+
+        .card_title {
+            height: 30px;
+        }
+
+        .card_space {
+            border: 2px solid LightGray;
+        }
+
+        .card_left .card_title, .card_right .top_title {
+        }
+
+        .card_left .card_space {
+            height: 220px;
+
+
+        }
+
+        .card_right{
+            width: 50%;
+        }
+
+        #card_top .card_title {
+            margin-top: 5px;
+        }
+
+        #card_down .card_title {
+            margin-bottom: 5px;
+        }
+
+        #card_right .top_title{
+            margin-top: 5px;
+            margin-left: 5%;
+        }
+
+        #card_right .bottom_title{
+            margin-bottom: 5px;
+            margin-left: 5%;
+        }
+
+        #card_right .card_space {
+            margin-left: 5%;
+
+            height: 445px;
+        }
+
+        #input_table {
+            border: 0px solid red;
+            width: 100%;
+        }
+
+        .input_label {
+            width: 5%;
+            border: 0px solid black;
+            padding-top: 15px;
+            font-weight: bolder;
+        }
+
+        .input_values {
+            width: 90%;
+        }
+
+        .input_div {
+            display: inline-block;
+            position: relative;
+            font-size: 14px;
+            height: 30px;
+            text-align: center;
+            margin-left: 5%;
+            top: 10px;
+        }
+
+        .input_div label {
+            position: absolute;
+            top: 15px;
+        }
+
+        .uint_number {
+            left: 35%;
+        }
+
+        .int_number {
+            left: 20%;
+        }
+
+        .real_number {
+            left: -15%;
+        }
+
+        .ureal_number {
+            left: 5%;
+        }
+
+        .input_tr {
+            height: 50px;
+
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .buttons input{
+            border-radius: 7px 7px 7px 7px;
+        }
+
+        #card_right .card_space {
+
+        }
+
+        #card_right .card_space table {
+            width: 100%;
+        }
+
+        #card_right .card_space table th {
+
+        }
+
+        .result_table {
+            border-spacing: 0px;
+            font-family: MarkerFelt, fantasy;
+        }
+
+        .result_table th {
+            font-weight: lighter;
+            color: 	#2F4F4F; /*DarkSlateGray --> <!-- LightYellow4 8B8B7A*/
+        }
+
+
+        .result_table .input_data_column {
+            width: 10%;
+        }
+
+        .result_table .time_column {
+            width: 26%;
+        }
+
+
+
+        #result_table_body {
+            border-spacing: 0 10px;
+        }
+
+        #result_table_body td{
+            border-top: 2px solid LightGray;
+            border-bottom: 2px solid LightGray;
+
+            transition-property: border;
+            transition-duration: 5s;
+            transition-delay: 5s;
+            transition-timing-function: cubic-bezier(0.1, 0.8, 0.5, 2), linear;
+        }
+
+        #result_table_body tr td:nth-child(1){
+            border-left: 2px solid LightGray;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #result_table_body tr td:nth-last-child(1){
+            border-right: 2px solid LightGray;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .result_column {
+            height: 15px;
+        }
+
+        .result_column img {
+            height: 100%;
+        }
+
+        .buttons input {
+            background: lightgrey;
+        }
+
+        .buttons input:hover {
+            background: darkgrey;
+        }
+
+        #y_text:focus {
+            outline: none;
+            border: 2px solid deepskyblue;
+        }
+
+        /* Стили для скролла */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+    </style>
+
+</head>
+
+
+<body>
+<table id="main_table">
+
+    <tr><td id="main_header" class='table_title' colspan="2">
+        <span>Добрягин Михаил Александрович (P3231)</span>
+        <span>31007</span>
+    </td></tr>
+
+    <tr class="input_tr">
+        <td class="card card_left" id="card_top">
+            <div class="card_title table_title" style="border-radius: 20px 5px 0px 0px;">
+                Область
+            </div>
+
+            <div class="card_space">
+                <object data="img/graph.svg" type="image/svg+xml" />
+            </div>
+
+        </td>
+
+        <td rowspan = "2" class="card" id="card_right">
+            <div style="border-radius: 5px 20px 0px 0px;" class="card_title table_title top_title">
+                Результаты
+            </div>
+
+            <div class="card_space">
+                <table class="result_table" style="height:5%;">
+                    <tr style="background: WhiteSmoke;">
+                        <th class="input_data_column">X</th>
+                        <th class="input_data_column">Y</th>
+                        <th class="input_data_column">R</th>
+                        <th class="time_column">Время запуска</th>
+                        <th class="time_column">Время работы</th>
+                        <th class="result_column">ВЕРДИКТ</th>
+                    </tr>
+                </table>
+
+                <div style="overflow-x: auto; height: 95%;">
+                    <table id="result_table_body" class="result_table">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="border-radius: 0px 0px 20px 5px;" class="card_title table_title bottom_title">
+                <br/>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="card card_left" id="card_down">
+            <div class="card_space">
+                <form id="input_form" action="" method="GET">
+                    <table id="input_table">
+
+                        <!-- X -->
+                        <tr class="input_tr">
+                            <td class="input_label"><label>X:</label></td>
+
+                            <td class="input_values">
+                                <div class="input_div">
+                                    <label for="x_checkbox1" class="int_number">-2</label>
+                                    <input id="x_checkbox1" type="checkbox" name="x_input" value="-2"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox2" class="real_number">-1.5</label>
+                                    <input id="x_checkbox2" type="checkbox" name="x_input" value="-1.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox3" class="int_number">-1</label>
+                                    <input id="x_checkbox3" type="checkbox" name="x_input" value="-1"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox4" class="real_number">-0.5</label>
+                                    <input id="x_checkbox4" type="checkbox" name="x_input" value="-0.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox5" class="uint_number">0</label>
+                                    <input id="x_checkbox5" type="checkbox" name="x_input" value="0"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox6" class="ureal_number">0.5</label>
+                                    <input id="x_checkbox6" type="checkbox" name="x_input" value="0.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox7" class="uint_number">1</label>
+                                    <input id="x_checkbox7" type="checkbox" name="x_input" value="1"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox8" class="ureal_number">1.5</label>
+                                    <input id="x_checkbox8" type="checkbox" name="x_input" value="1.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="x_checkbox9" class="uint_number">2</label>
+                                    <input id="x_checkbox9" type="checkbox" name="x_input" value="2"/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Y -->
+                        <tr class="input_tr">
+                            <td class="input_label">
+                                <label for="y_text">Y:</label>
+                            </td>
+                            <td class="input_div">
+                                <input name="y_input" id="y_text" type="text" placeholder="Значение из (-5;5)"/>
+                            </td>
+
+                        </tr>
+
+                        <!-- R -->
+                        <tr class="input_tr">
+                            <td class="input_label"><label>R:</label></td>
+
+                            <td class="input_values">
+                                <div class="input_div">
+                                    <label for="r_radio1" class="uint_number">1</label>
+                                    <input id="r_radio1" type="radio" name="r_input" value="1"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="r_radio2" class="ureal_number">1.5</label>
+                                    <input id="r_radio2" type="radio" name="r_input" value="1.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="r_radio3" class="uint_number">2</label>
+                                    <input id="r_radio3" type="radio" name="r_input" value="2"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="r_radio4" class="ureal_number">2.5</label>
+                                    <input id="r_radio4" type="radio" name="r_input" value="2.5"/>
+                                </div>
+
+                                <div class="input_div">
+                                    <label for="r_radio5" class="uint_number">3</label>
+                                    <input id="r_radio5" type="radio" name="r_input" value="3"/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Buttons -->
+                        <tr>
+                            <td colspan="2">
+                                <div class="buttons">
+                                    <input id="submit_button" class="button" type="submit" value="Отправить">
+                                    <input id="reset_button" class="button" type="reset" value="Сбросить">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div style="border-radius: 0px 0px 5px 20px;" class="card_title table_title">
+                Значения
+            </div>
+
+        </td>
+    </tr>
+
+
+
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="./js/script.js"></script>
+</body>
+
+</html>

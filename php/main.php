@@ -26,12 +26,12 @@ function check4($x, $y, $r)
 
 function checkX($x)
 {
-    return is_double($x) && ($x != -2 || $x != -1.5 || $x != -1 || $x != -0.5 || $x != 0 || $x != 0.5 || $x != 1 || $x != 1.5 || $x != 2 || $x != 2.5);
+    return is_double($x) && ($x == -2 || $x == -1.5 || $x == -1 || $x == -0.5 || $x == 0 || $x == 0.5 || $x == 1 || $x == 1.5 || $x == 2 || $x == 2.5);
 }
 
 function checkR($r)
 {
-    return is_double($r) && ($r != 1 || $r != 1.5 || $r != 2 || $r != 2.5 || $r != 3);
+    return is_double($r) && ($r == 1 || $r == 1.5 || $r == 2 || $r == 2.5 || $r == 3);
 }
 
 function checkY($y)
